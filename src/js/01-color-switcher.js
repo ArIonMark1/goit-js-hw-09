@@ -15,35 +15,61 @@
 */
 // ############################################
 
-let IDACTION = null;
+// let IDACTION = null;
 
-const generator = {
+
+const windowEl = {
   body: document.querySelector('body'),
   startButton: document.querySelector('button[data-start]'),
   stopButton: document.querySelector('button[data-stop]'),
-
-  getRandomHexColor: function () {
-    return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, 0)}`;
-  },
 };
 // раз на секунду змінює колір фону <body> на випадкове значення. 
 // Натисканням на кнопку «Stop» зміна кольору фону повинна зупинятися.
 // Зроби так, щоб доки зміна теми запущена, кнопка «Start» була неактивною (disabled).
+changeState(false);
+class Generator { 
+  constructor({target, toggleActivity = false}) { 
+    this.target = target;
+    this.toggleActivity = toggleActivity;
+    this.idAction = null;
+    this.isActive = false;
+  }
+  getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, 0)}`;
+  }
+  start() { 
 
-generator.startButton.addEventListener('click', startGenerator);
-generator.stopButton.addEventListener('click', stopGenerator);
+    if (this.isActive) { 
+      return;
+    };
 
-function startGenerator() { 
-  let i = 1;
-  IDACTION = setInterval(() => {
-    generator.body.style.backgroundColor = generator.getRandomHexColor();
-    console.log(IDACTION)
-  }, 2000)
+    this.isActive = true;
+    this.toggleActivity(this.isActive);
+    this.idAction = setInterval(() => {
+      this.target.style.backgroundColor = this.getRandomHexColor();
+    }, 1500);
+
+  }
+  stop() { 
+    this.isActive = false;
+    this.toggleActivity(this.isActive);
+    clearInterval(this.idAction);
+  }
+
+};
+const generator = new Generator({target: windowEl.body, toggleActivity: changeState});
+
+windowEl.startButton.addEventListener('click', generator.start.bind(generator));
+windowEl.stopButton.addEventListener('click', generator.stop.bind(generator));
+ 
+function changeState(state) { 
+
+  if (state) { 
+    windowEl.startButton.disabled = true;
+    windowEl.stopButton.disabled = false;
+  } else {
+    windowEl.startButton.disabled = false;
+    windowEl.stopButton.disabled = true;
+  }
 };
 
-function stopGenerator() { 
-
-  console.log(IDACTION);
-  clearInterval(IDACTION);
-  
-};
