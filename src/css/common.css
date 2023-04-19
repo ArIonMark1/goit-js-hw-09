@@ -68,3 +68,61 @@ img {
   width: 400px;
   margin: 0 auto;
 }
+.taskData {
+  /* border: 1px solid #212121; */
+  padding: 15px;
+  text-align: center;
+}
+.form-control {
+  border: none;
+  outline: 2px solid rgba(210, 180, 140, 0.462);
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+  color: #ab795d;
+}
+.startBtn {
+  padding: 10px 20px;
+  border: none;
+  outline: 2px solid rgba(210, 180, 140);
+  border-radius: 5px;
+  /* background: radial-gradient(ellipse at top, #e66465, transparent),
+    radial-gradient(ellipse at bottom, #4d9f0c, transparent); */
+  background: radial-gradient(#ffe6006b 5%, #8b000047);
+  color: #ab795d;
+  opacity: 0.8;
+}
+.startBtn:active {
+  opacity: 1;
+}
+.startBtn:disabled {
+  opacity: 1;
+  background: radial-gradient(#79614aa2 5%, #ffcbcb75);
+  color: rgba(218, 210, 210, 0.527);
+  outline: none;
+}
+.timer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 30px;
+  justify-content: center;
+}
+.field {
+  outline: 1px solid gainsboro;
+  background: rgba(210, 180, 140, 0.3);
+  border-radius: 20px;
+  min-width: 100px;
+  min-height: 105px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  color: #ab795d;
+}
+.field .value {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+}
