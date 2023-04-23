@@ -24,6 +24,18 @@ img {
   gap: 10px;
   /* border: 1px solid red; */
 }
+.button-block button {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px #212121;
+  background-color: teal;
+  padding: 10px 30px;
+  font-size: 30px;
+  color: #eedfd6;
+}
+.button-block button:disabled {
+  background-color: gray;
+}
 .alert {
   display: inline-block;
   padding: 38px 0;
