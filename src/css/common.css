@@ -102,11 +102,30 @@ img {
   outline: none;
 }
 .timer {
+  /* border: 1px solid #ab795d; */
   display: flex;
+  flex-direction: column;
   gap: 10px;
   align-items: center;
   margin-top: 30px;
   justify-content: center;
+}
+.actions {
+  /* border: 1px solid #ab795d; */
+}
+.actions .timer-btn {
+  border: transparent;
+  border-radius: 5px;
+
+  background-color: rgba(170, 152, 152);
+  padding: 10px 55px;
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #eedfd6;
+}
+.actions .timer-btn:first-child {
+  margin-right: 40px;
 }
 .field {
   outline: 1px solid gainsboro;
