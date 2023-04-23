@@ -26,9 +26,11 @@ function getFormData(evt) {
 
       return createPromise(position, promiseDelay);
     });
-  
+  // **********************************
+  // Активація другого варіанту запуску
   // callPromisesFromArr(promisesArray);
 };
+
 // *************************************************
 function createPromise(position, delay) { 
  /*
@@ -47,8 +49,9 @@ function createPromise(position, delay) {
     }, delay)
   })
 };
+
 // *************************************************
-// Перший варіант запуску Промісів
+// *** Перший варіант запуску Промісів ***
 function callPromises(formElement) {
   // 3 викликаємо функцію яка створює проміси в тій кількості, яку ми задали в полі 'amount'
   const [delay, step, amount] = formElement;
@@ -73,7 +76,7 @@ function callPromises(formElement) {
   };
 
 }
-// Другий варіант запуску Промісів
+// *** Другий варіант запуску Промісів ***
 function callPromisesFromArr(promiseArr) { 
   promiseArr.forEach(promise => {
     promise
