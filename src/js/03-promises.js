@@ -12,9 +12,10 @@ function getFormData(evt) {
   evt.preventDefault();
   // ******************
   // Активація першого варіанту запуску
-  callPromises(evt.currentTarget);
+  // callPromises(evt.currentTarget);
   // ******************
   const { delay, step, amount } = evt.currentTarget
+  // При підтверджені повертає три поля з даними !!!!
   
   // створюємо масив промісів котрим передаємо їх індекс та тривалість виклику
   const promisesArray = new Array(Number(amount.value))
@@ -28,7 +29,7 @@ function getFormData(evt) {
     });
   // **********************************
   // Активація другого варіанту запуску
-  // callPromisesFromArr(promisesArray);
+  callPromisesFromArr(promisesArray);
 };
 
 // *************************************************
@@ -52,39 +53,39 @@ function createPromise(position, delay) {
 
 // *************************************************
 // *** Перший варіант запуску Промісів ***
-function callPromises(formElement) {
-  // 3 викликаємо функцію яка створює проміси в тій кількості, яку ми задали в полі 'amount'
-  const [delay, step, amount] = formElement;
-  console.log('=> ', delay.value, step.value, amount.value);
+// function callPromises(formElement) {
+//   // 3 викликаємо функцію яка створює проміси в тій кількості, яку ми задали в полі 'amount'
+//   const [delay, step, amount] = formElement;
+//   console.log('=> ', delay.value, step.value, amount.value);
 
-  for (let index = 0; index < Number(amount.value); index++) { 
+//   for (let index = 0; index < Number(amount.value); index++) { 
 
-    const position = index + 1;
-    const promiseDelay = Number(delay.value) + index * Number(step.value);
+//     const position = index + 1;
+//     const promiseDelay = Number(delay.value) + index * Number(step.value);
 
-    createPromise(position, promiseDelay)
-      .then(({ position, delay }) => {
+//     createPromise(position, promiseDelay)
+//       .then(({ position, delay }) => {
 
-        Notiflix.Notify.success(`Success: ${position} : ${delay}`);
-        console.log(`Success: ${position} : ${delay}`);
-      })
-      .catch(({ position, delay }) => {
+//         Notiflix.Notify.success(`Success: ${position} : ${delay}`);
+//         console.log(`Success: ${position} : ${delay}`);
+//       })
+//       .catch(({ position, delay }) => {
 
-        Notiflix.Notify.failure(`Error!: ${position} : ${delay}`);
-        console.error(`Error!: ${position} : ${delay}`)
-      });
-  };
+//         Notiflix.Notify.failure(`Error!: ${position} : ${delay}`);
+//         console.error(`Error!: ${position} : ${delay}`)
+//       });
+//   };
 
-}
+// }
 // *** Другий варіант запуску Промісів ***
 function callPromisesFromArr(promiseArr) { 
   promiseArr.forEach(promise => {
     promise
       .then(({ position, delay }) => {
-        Notiflix.Notify.success(`Success: ${position} : ${delay}`);
+        Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        Notiflix.Notify.failure(`Error!: ${position} : ${delay}`);
+        Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
     
   });
